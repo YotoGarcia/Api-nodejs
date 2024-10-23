@@ -3,8 +3,8 @@ const morgan = require('morgan')
 const config = require('./config');
 
 const clientes = require('./modulos/clientes/rutas');
-const { todos } = require('./DB/mysql');
-const { error } = require('./red/respuestas');
+const error = require('./red/errors');
+const usuarios = require('./modulos/usuarios/rutas');
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.set('port', config.app.port)
 
 //rutas
 app.use('/api/clientes', clientes);
+app.use('/api/usuarios', usuarios);
 app.get(error);
 
 module.exports = app;
